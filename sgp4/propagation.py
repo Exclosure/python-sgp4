@@ -17,7 +17,7 @@ code for the first time here in its Python form.
 |   On a very hot August day in 2012
 
 """
-from math import atan2, cos, fabs, pi, sin, sqrt
+from jax.numpy import sin, cos, pi, sqrt, arctan2 as atan2, abs as fabs
 
 deg2rad = pi / 180.0;
 _nan = float('NaN')
@@ -2057,5 +2057,4 @@ def getgravconst(whichconst):
            j3     =  -0.00000253215306;
            j4     =  -0.00000161098761;
            j3oj2  =  j3 / j2;
-
        return tumin, mu, radiusearthkm, xke, j2, j3, j4, j3oj2

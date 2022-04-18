@@ -9,3 +9,4 @@
 /htmlcov/
 /t/
 /tmp*.py
+__pycache__

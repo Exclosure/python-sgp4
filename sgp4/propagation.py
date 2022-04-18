@@ -17,6 +17,10 @@ code for the first time here in its Python form.
 |   On a very hot August day in 2012
 
 """
+# NB: This has to happen before any JAX code is run; better to set 
+# the environment variable JAX_ENABLE_X64=True on the command line.
+from jax.config import config  # type: ignore
+config.update("jax_enable_x64", True)
 from jax.numpy import sin, cos, pi, sqrt, arctan2 as atan2, abs as fabs
 
 deg2rad = pi / 180.0;

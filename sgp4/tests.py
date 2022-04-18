@@ -831,3 +831,21 @@ def load_tests(loader, tests, ignore):
 
 if __name__ == '__main__':
     main()
+
+
+def test_satrec_new():
+    line0, line1, line2 = VANGUARD_TLE.splitlines()
+    satrec = Satrec.twoline2rv(line1, line2)
+
+    satrec.satnum = 1
+    assert satrec.satnum == 1
+    satrec.satnum = 99999
+    assert satrec.satnum == 99999
+    satrec.satnum = 100001
+    assert satrec.satnum == 100001
+    satrec.satnum = 339999
+    assert satrec.satnum == 339999
+    with _testcase.assertRaises(ValueError):
+        satrec.satnum = -1
+    with _testcase.assertRaises(ValueError):
+        satrec.satnum = 340000

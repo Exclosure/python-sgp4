@@ -293,7 +293,7 @@ static PyMethodDef Satrec_methods[] = {
 static PyMemberDef Satrec_members[] = {
     /* Listed in the order they appear in a TLE record. */
 
-    {"operationmode", T_CHAR, O(operationmode), READONLY,
+    {"operationmode", T_CHAR, O(operationmode), 0,
      PyDoc_STR("Operation mode: 'a' legacy AFSPC, or 'i' improved.")},
     {"jdsatepoch", T_DOUBLE, O(jdsatepoch), 0,
      PyDoc_STR("Julian date of epoch, day number (see jdsatepochF).")},
@@ -306,27 +306,27 @@ static PyMemberDef Satrec_members[] = {
      PyDoc_STR("Year of this element set's epoch (see epochdays). Not set by sgp4init().")},
     {"epochdays", T_DOUBLE, O(epochdays), 0,
      PyDoc_STR("Day of the year of this element set's epoch (see epochyr). Not set by sgp4init().")},
-    {"ndot", T_DOUBLE, O(ndot), READONLY,
+    {"ndot", T_DOUBLE, O(ndot), 0,
      PyDoc_STR("Ballistic Coefficient in revs/day.")},
-    {"nddot", T_DOUBLE, O(nddot), READONLY,
+    {"nddot", T_DOUBLE, O(nddot), 0,
      PyDoc_STR("Second Derivative of Mean Motion in revs/day^3.")},
-    {"bstar", T_DOUBLE, O(bstar), READONLY,
+    {"bstar", T_DOUBLE, O(bstar), 0,
      PyDoc_STR("Drag Term in inverse Earth radii.")},
     {"ephtype", T_INT, O(ephtype), 0,
      PyDoc_STR("Ephemeris type (should be 0 in published TLEs).")},
     {"elnum", T_LONG, O(elnum), 0,
      PyDoc_STR("Element set number.")},
-    {"inclo", T_DOUBLE, O(inclo), READONLY,
+    {"inclo", T_DOUBLE, O(inclo), 0,
      PyDoc_STR("Inclination in radians.")},
-    {"nodeo", T_DOUBLE, O(nodeo), READONLY,
+    {"nodeo", T_DOUBLE, O(nodeo), 0,
      PyDoc_STR("Right ascension of ascending node in radians.")},
-    {"ecco", T_DOUBLE, O(ecco), READONLY,
+    {"ecco", T_DOUBLE, O(ecco), 0,
      PyDoc_STR("Eccentricity.")},
-    {"argpo", T_DOUBLE, O(argpo), READONLY,
+    {"argpo", T_DOUBLE, O(argpo), 0,
      PyDoc_STR("Argument of perigee in radians.")},
-    {"mo", T_DOUBLE, O(mo), READONLY,
+    {"mo", T_DOUBLE, O(mo), 0,
      PyDoc_STR("Mean anomaly in radians.")},
-    {"no_kozai", T_DOUBLE, O(no_kozai), READONLY,
+    {"no_kozai", T_DOUBLE, O(no_kozai), 0,
      PyDoc_STR("Mean motion in radians per minute.")},
     {"revnum", T_LONG, O(revnum), 0,
      PyDoc_STR("Integer revolution number at the epoch.")},
@@ -334,69 +334,69 @@ static PyMemberDef Satrec_members[] = {
     /* For compatibility with the old struct members, also accept the
        plain name "no". */
 
-    {"no", T_DOUBLE, O(no_kozai), READONLY,
+    {"no", T_DOUBLE, O(no_kozai), 0,
      PyDoc_STR("Alias for the more carefully named ``no_kozai``.")},
 
     /* Derived values that do not appear explicitly in the TLE. */
 
-    {"method", T_CHAR, O(method), READONLY,
+    {"method", T_CHAR, O(method), 0,
      PyDoc_STR("Method, either 'n' near earth or 'd' deep space.")},
-    {"error", T_INT, O(error), READONLY,
+    {"error", T_INT, O(error), 0,
      PyDoc_STR("Error code (1-6) documented in sgp4()")},
-    {"a", T_DOUBLE, O(a), READONLY,
+    {"a", T_DOUBLE, O(a), 0,
      PyDoc_STR("semi-major axis")},
-    {"altp", T_DOUBLE, O(altp), READONLY,
+    {"altp", T_DOUBLE, O(altp), 0,
      PyDoc_STR("altitude of perigee")},
-    {"alta", T_DOUBLE, O(alta), READONLY,
+    {"alta", T_DOUBLE, O(alta), 0,
      PyDoc_STR("altitude of perigee")},
 
     /* Single averaged mean elements */
 
-    {"am", T_DOUBLE, O(am), READONLY,
+    {"am", T_DOUBLE, O(am), 0,
      PyDoc_STR("am: Average semi-major axis")},
-    {"em", T_DOUBLE, O(em), READONLY,
+    {"em", T_DOUBLE, O(em), 0,
      PyDoc_STR("em: Average eccentricity")},
-    {"im", T_DOUBLE, O(im), READONLY,
+    {"im", T_DOUBLE, O(im), 0,
      PyDoc_STR("im: Average inclination")},
-    {"Om", T_DOUBLE, O(Om), READONLY,
+    {"Om", T_DOUBLE, O(Om), 0,
      PyDoc_STR("Om: Average right ascension of ascending node")},
-    {"om", T_DOUBLE, O(om), READONLY,
+    {"om", T_DOUBLE, O(om), 0,
      PyDoc_STR("om: Average argument of perigee")},
-    {"mm", T_DOUBLE, O(mm), READONLY,
+    {"mm", T_DOUBLE, O(mm), 0,
      PyDoc_STR("mm: Average mean anomaly")},
-    {"nm", T_DOUBLE, O(nm), READONLY,
+    {"nm", T_DOUBLE, O(nm), 0,
      PyDoc_STR("nm: Average mean motion")},
 
     /* Gravity-constant dependent values (initialized by sgp4init() */
 
-    {"tumin", T_DOUBLE, O(tumin), READONLY,
+    {"tumin", T_DOUBLE, O(tumin), 0,
      PyDoc_STR("minutes in one time unit")},
-    {"mu", T_DOUBLE, O(mus), READONLY,
+    {"mu", T_DOUBLE, O(mus), 0,
      PyDoc_STR("Earth gravitational parameter")},
-    {"radiusearthkm", T_DOUBLE, O(radiusearthkm), READONLY,
+    {"radiusearthkm", T_DOUBLE, O(radiusearthkm), 0,
      PyDoc_STR("radius of the earth in km")},
-    {"xke", T_DOUBLE, O(xke), READONLY,
+    {"xke", T_DOUBLE, O(xke), 0,
      PyDoc_STR("reciprocal of tumin")},
-    {"j2", T_DOUBLE, O(j2), READONLY,
+    {"j2", T_DOUBLE, O(j2), 0,
      PyDoc_STR("un-normalized zonal harmonic j2 value")},
-    {"j3", T_DOUBLE, O(j3), READONLY,
+    {"j3", T_DOUBLE, O(j3), 0,
      PyDoc_STR("un-normalized zonal harmonic j3 value")},
-    {"j4", T_DOUBLE, O(j4), READONLY,
+    {"j4", T_DOUBLE, O(j4), 0,
      PyDoc_STR("un-normalized zonal harmonic j4 value")},
-    {"j3oj2", T_DOUBLE, O(j3oj2), READONLY,
+    {"j3oj2", T_DOUBLE, O(j3oj2), 0,
      PyDoc_STR("j3 divided by j2")},
 
     /* Other convenience variables (some required by propagation.py) */
 
-    {"t", T_DOUBLE, O(t), READONLY,
+    {"t", T_DOUBLE, O(t), 0,
      PyDoc_STR("Last tsince input to sgp4()")},
-    {"mdot", T_DOUBLE, O(mdot), READONLY,
+    {"mdot", T_DOUBLE, O(mdot), 0,
      PyDoc_STR("mean anomaly dot (rate)")},
-    {"argpdot", T_DOUBLE, O(argpdot), READONLY,
+    {"argpdot", T_DOUBLE, O(argpdot), 0,
      PyDoc_STR("argument of perigee dot (rate)")},
-    {"nodedot", T_DOUBLE, O(nodedot), READONLY,
+    {"nodedot", T_DOUBLE, O(nodedot), 0,
      PyDoc_STR("right ascension of ascending node dot (rate)")},
-    {"gsto", T_DOUBLE, O(gsto), READONLY,
+    {"gsto", T_DOUBLE, O(gsto), 0,
      PyDoc_STR("gsto: greenwich sidereal time")},
 
     {NULL}
@@ -444,13 +444,46 @@ get_satnum(SatrecObject *self, void *closure)
     return PyLong_FromLong(n);
 }
 
+static int
+set_satnum(SatrecObject *self, PyObject *value, void *closure)
+{
+    long satnum, remainder;
+    char *satnum_str = self->satrec.satnum;;
+
+    if (!PyLong_Check(value)) {
+        PyErr_SetString(PyExc_ValueError, "satnum must be an integer.");
+        return -1;
+    }
+    satnum = PyLong_AsLong(value);
+    if (satnum < 0) {
+        PyErr_SetString(PyExc_ValueError, "satnum must be greater than zero.");
+        return -1;
+    }
+    
+    // See https://www.space-track.org/documentation#tle-alpha5
+    if (satnum < 100000) {
+        snprintf(satnum_str, 6, "%ld", satnum);
+        return 0;
+    } else if (satnum < 340000) {
+        char c = 'A' + satnum / 10000 - 10;
+        if (c > 'I') c++;
+        if (c > 'O') c++;
+        satnum_str[0] = c;
+        snprintf(satnum_str + 1, 5, "%04ld", satnum % 10000);
+        return 0;
+    } else {
+        PyErr_SetString(PyExc_ValueError, "satnum must be less than 340000.");
+        return -1;
+    }
+}
+
 static PyGetSetDef Satrec_getset[] = {
     {"intldesg", (getter)get_intldesg, (setter)set_intldesg,
      PyDoc_STR("International Designator: a string of up to 7 characters"
                " from the first line of the TLE that typically provides"
                " two digits for the launch year, a 3-digit launch number,"
                " and one or two letters for which piece of the launch.")},
-    {"satnum", (getter)get_satnum, NULL,
+    {"satnum", (getter)get_satnum, (setter)set_satnum,
      PyDoc_STR("Satellite number, from characters 3-7 of each TLE line.")},
     {NULL},
 };
